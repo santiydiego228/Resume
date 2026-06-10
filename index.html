@@ -1,0 +1,655 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме студента - Гришаев Д.В</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7ff;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #FFD700;
+            box-shadow: var(--box-shadow);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Основной контент */
+        main {
+            padding: 3rem 0;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Боковая панель */
+        aside {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            height: fit-content;
+        }
+
+        .skills-list, .languages-list {
+            list-style-type: none;
+        }
+
+        .skills-list li, .languages-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-name {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: #FFD700;
+            border-radius: 4px;
+        }
+
+        /* Основное содержание */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.7rem;
+        }
+
+        .card h2 i {
+            color: var(--secondary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: #800080;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-place {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Хобби */
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .hobby {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: #f8f9ff;
+            transition: var(--transition);
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .hobby:hover {
+            background-color: #eef2ff;
+            transform: translateY(-3px);
+        }
+
+        .hobby i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Кнопка скачивания */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .hobby {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с контактной информацией -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile">
+                    <img src="https://sun9-67.userapi.com/s/v1/ig2/y9m7b2Idt08GVdLoHiUQSl9jHSSWjDTNZmqILprIblx-O1ML2cuUUiNkET71gNwSx7LLCxm3p0G5ZkeyzAF5jLSm.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,960x1280&from=bu&cs=960x0" alt="Фото студента" class="profile-img">
+                    <div class="profile-info">
+                        <h1>Гришаев Данил Васильевич</h1>
+                        <p class="title">Студент 4 курса, Судомеханический факультет, кафедра ПТМиК.</p>
+                        <p>Мотивированный и целеустремленный студент, стремящийся получить практический опыт в области инженерного дела. Ищу возможности для стажировки и профессионального роста.</p>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>grischaev@bk.ru</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+7 (913) 021-32-36</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>г. Новороссийск</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Боковая панель с навыками -->
+        <aside>
+            <div class="card">
+                <h2><i class="fas fa-code"></i> Навыки</h2>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">Умение работать в режиме многозадачности</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Аналитические способности</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Работа в коллективе</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Лидерские качества</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Стрессоустойчивость</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Умение работать с ПК</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Ответственность</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Быстрообучаемость</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Умение работать с инструментом</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Познания в области механики и инженерного дела</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card" style="margin-top: 2rem;">
+                <h2><i class="fas fa-language"></i> Языки</h2>
+                <ul class="languages-list">
+                    <li>
+                        <span class="skill-name">Русский (родной)</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="skill-name">Английский (B1)</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+	    <div class="card">
+                <h2><i class="fas fa-code"></i> Категории прав</h2>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">B, B1, M</span>
+                        <div class="skill">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Основное содержание -->
+        <div class="content">
+            <section class="card">
+                <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022-2026 - нынешнее образование</div>
+                        <div class="timeline-title">Высшее образование по программе специалитета</div>
+                        <div class="timeline-place">ФГБОУ ВО "ГМУ им. адм. Ф.Ф. Ушакова"</div>
+                        <p>Очная форма обучения. Специализация: Наземные транспортно-технологические средства. Код специализации: 23.05.01. Средний балл: 5. Участник научных конференций. Зам старшины группы.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2011 - 2022</div>
+                        <div class="timeline-title">Полное среднее образование</div>
+                        <div class="timeline-place">МБОУ СОШ №12 г. Яровое Алтайского Края</div>
+                        <p>Углубленное изучение математики, информатики и физики. Призер региональных олимпиад по физике, математике.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2014 - 2019</div>
+                        <div class="timeline-title">Дополнительное образование</div>
+                        <div class="timeline-place">МБУ ДО, ДШИ г. Яровое</div>
+                        <p>"Народные инструменты"/гитара. Участник сольных, оркестровых выступлений в ГДК "Химик".</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">июль 2025</div>
+                        <div class="timeline-title">Стажёр-техник</div>
+                        <div class="timeline-place">ООО "КомЭнерго"</div>
+                        <p>Участие в поддержании работы электростанции. Участие в ремонте газотурбинных установок Jenbacher 630. Участие в развитии программы для студентов-практикантов.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">июль 2024 - август 2024</div>
+                        <div class="timeline-title">Техник-механик</div>
+                        <div class="timeline-place">ООО "Грифон"</div>
+                        <p>Участие в работах по починке и обслуживании тягачей DAF, SHACMAN, KAMAZ, МАZ, MERCEDES, грузовиков MITSUBISHI FUSO, ISUZU ELF, KAMAZ Компас. Проведение планового/внепланового ТО.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date"> с детства и до 2022</div>
+                        <div class="timeline-title">Разнорабочий</div>
+                        <div class="timeline-place">Гостиница "У Василия"</div>
+                        <p>Участие в работах по строительству и отделке гостевых домов (фундамент, кладка, каркас, кровля, утепление, фасад, сантехника). Участие в укладке плитки и монтаже систем водоснабжения. Поддержание работоспособного состояния строений, обслуживание номеров, мелкий ремонт.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-project-diagram"></i> Проекты</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026</div>
+                        <div class="timeline-title">Научная статья для пленарного заседания</div>
+                        <p>Тема статьи:"Анализ сезонных режимов работы электростанций г. Новороссийск, с формированием рекомендаций по улучшению манёвренности в условиях переменных нагрузок". Заняла 1 место, будет печататься в научном журнале "Вестник".</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026</div>
+                        <div class="timeline-title">Научная статья для секционной научной конференции</div>
+                        <p>Тема статьи:"Ленточные конвейеры на воздушной подушке". Подготовлена для ознакомления участников конференции с перспективной конструкцией ЛКВП.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025</div>
+                        <div class="timeline-title">Научная статья для пленарного заседания</div>
+                        <p>Тема статьи:"Сравнительный анализ жизненного цикла и экономической эффективности промышленной техники". Заняла 1 место, будет печататься в научном журнале "Вестник".</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-title">Научная статья для секционной научной конференции</div>
+                        <p>Тема статьи:"Теорема Менелая". Подготовлена для ознакомления участников конференции с основами аффинской геометрии в целях общего развития.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-heart"></i> Хобби и интересы</h2>
+                <div class="hobbies">
+                    <div class="hobby">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Компьютерные технологии</span>
+                    </div>
+                    <div class="hobby">
+                        <i class="fas fa-book"></i>
+                        <span>Саморазвитие</span>
+                    </div>
+                    <div class="hobby">
+                        <i class="fas fa-hiking"></i>
+                        <span>Активный отдых</span>
+                    </div>
+                    <div class="hobby">
+                        <i class="fas fa-chess"></i>
+                        <span>Шахматы</span>
+                    </div>
+                    <div class="hobby">
+                        <i class="fas fa-music"></i>
+                        <span>Игра на гитаре</span>
+                    </div>
+                    <div class="hobby">
+                        <i class="fas fa-gear"></i>
+                        <span>Техника и механизмы</span>
+                    </div>
+		    <div class="hobby">
+                        <i class="fas fa-car"></i>
+                        <span>Автомобили</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 Гришаев Данил. Резюме студента.</p>
+            <p>Всегда открыт для новых возможностей и сотрудничества!</p>
+            <div class="social-links">
+                 <a href="https://vk.com/kazah_inside" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-vk"></i>
+            </a>
+            <a href="https://t.me/kazah_inside" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/79130213236" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        // Добавляем анимацию для карточек при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Анимация для прогресс-баров
+            const skillBars = document.querySelectorAll('.skill-level');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s ease-in-out';
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
